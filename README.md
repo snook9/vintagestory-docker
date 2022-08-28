@@ -15,7 +15,7 @@ docker build -t vintagestory_server .
 # Docker run
 With docker-compose:
 ``` bash
-docker-compose -f .\docker-compose-vintagestory.yml up -d
+docker-compose -f ./docker-compose-vintagestory.yml up -d
 ```
 With docker:
 ``` bash

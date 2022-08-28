@@ -32,12 +32,14 @@ RUN chown -R $USERNAME $DATAPATH
 # Vintage story server extract
 WORKDIR $VSPATH
 COPY ./vs_server_*.*.*.tar.gz $VSPATH
+COPY ./launcher.sh $VSPATH
 RUN tar xzf vs_server_*.*.*.tar.gz
 RUN chmod +x ./server.sh
+RUN chmod +x ./launcher.sh
 
 # Changes user
 USER $USERNAME
 
 # Start the server
-# With sleep infinity to prevent exit
-CMD ./server.sh start ; sleep infinity
+# This script hooks the stop command
+ENTRYPOINT [ "./launcher.sh" ]
