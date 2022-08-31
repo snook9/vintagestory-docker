@@ -38,6 +38,9 @@ RUN tar xzf vs_server_*.*.*.tar.gz
 RUN chmod +x ./server.sh
 RUN chmod +x ./launcher.sh
 
+# Clean up
+RUN rm -f vs_server_*.*.*.tar.gz
+
 # Changes user
 USER $USERNAME
 
