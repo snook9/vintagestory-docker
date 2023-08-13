@@ -3,10 +3,6 @@ Vintage Story Server
 
 Dockerfile for running a Vintage Story Server in a container.
 
-# First Step
-First, you must download the Tar.gz Archive/Linux server version from https://www.vintagestory.at.<br/>
-The .tar.gz archive must be located next to the Dockerfile.
-
 # Docker build
 ``` bash
 docker build -t vintagestory_server .

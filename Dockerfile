@@ -6,19 +6,22 @@ EXPOSE 42420
 ARG USERNAME=vintagestory
 ARG VSPATH=/home/vintagestory/server
 ARG DATAPATH=/var/vintagestory/data
+# Name of the tar.gz file from cdn.vintagestory.at
+ARG FILENAME=vs_server_linux-x64_1.18.8.tar.gz
 
 # Install dependencies
 RUN apt-get update -q -y
 RUN apt-get install -yf \
     screen wget curl vim
-# Mono
+# .NET
 RUN apt-get install -yf \
-    apt-transport-https dirmngr gnupg ca-certificates
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-RUN echo "deb https://download.mono-project.com/repo/debian stable-buster main" | tee /etc/apt/sources.list.d/mono-official-stable.list
-RUN apt-get update -q -y
-RUN apt-get install -yf \
-    mono-complete
+    procps
+RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+RUN rm packages-microsoft-prod.deb
+# .NET RUNTIME
+RUN apt-get update && \
+    apt-get install -y aspnetcore-runtime-7.0
 
 # Add user
 RUN useradd -ms /bin/bash $USERNAME
@@ -31,15 +34,15 @@ RUN chown -R $USERNAME $DATAPATH
 
 # Vintage story server extract
 WORKDIR $VSPATH
-#COPY ./vs_server_*.*.*.tar.gz $VSPATH
-RUN wget https://cdn.vintagestory.at/gamefiles/stable/vs_server_1.18.7.tar.gz
+#COPY ./$FILENAME $VSPATH
+RUN wget https://cdn.vintagestory.at/gamefiles/stable/$FILENAME
 COPY ./launcher.sh $VSPATH
-RUN tar xzf vs_server_*.*.*.tar.gz
+RUN tar xzf $FILENAME
 RUN chmod +rx ./server.sh
 RUN chmod +rx ./launcher.sh
 
 # Clean up
-RUN rm -f vs_server_*.*.*.tar.gz
+RUN rm -f $FILENAME
 
 # Changes user
 USER $USERNAME
