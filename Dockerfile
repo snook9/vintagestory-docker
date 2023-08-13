@@ -38,6 +38,7 @@ WORKDIR $VSPATH
 RUN wget https://cdn.vintagestory.at/gamefiles/stable/$FILENAME
 COPY ./launcher.sh $VSPATH
 RUN tar xzf $FILENAME
+RUN chown -R $USERNAME $VSPATH
 RUN chmod +rx ./server.sh
 RUN chmod +rx ./launcher.sh
 
