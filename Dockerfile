@@ -32,11 +32,11 @@ RUN chown -R $USERNAME $DATAPATH
 # Vintage story server extract
 WORKDIR $VSPATH
 #COPY ./vs_server_*.*.*.tar.gz $VSPATH
-RUN wget https://cdn.vintagestory.at/gamefiles/stable/vs_server_1.17.0.tar.gz
+RUN wget https://cdn.vintagestory.at/gamefiles/stable/vs_server_1.18.7.tar.gz
 COPY ./launcher.sh $VSPATH
 RUN tar xzf vs_server_*.*.*.tar.gz
-RUN chmod +x ./server.sh
-RUN chmod +x ./launcher.sh
+RUN chmod +rx ./server.sh
+RUN chmod +rx ./launcher.sh
 
 # Clean up
 RUN rm -f vs_server_*.*.*.tar.gz

@@ -1,14 +1,9 @@
 version: "3.9"
 services:
-  gitlab:
+  vintagestory:
     image: docker.io/library/vintagestory_server:latest
-    container_name: vintagestory_server
     ports:
       - "42420:42420"
     restart: unless-stopped
     volumes:
-      - vintagestory_data:/var/vintagestory/data
-
-volumes:
-  vintagestory_data:
-    name: vintagestory_data
+      - /media/data/vintagestory:/var/vintagestory/data
