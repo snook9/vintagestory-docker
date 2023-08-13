@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   vintagestory:
-    image: docker.io/library/vintagestory_server:latest
+    image: snook9/vintagestory_server:v1.18.8
     ports:
       - "42420:42420"
     restart: unless-stopped
