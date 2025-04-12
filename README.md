@@ -15,7 +15,7 @@ docker-compose -f ./docker-compose-vintagestory.yml up -d
 ```
 With docker:
 ``` bash
-docker run -v vintagestory_data:/var/vintagestory/data --restart unless-stopped -d -p 42420:42420 snook9/vintagestory_server:latest
+docker run -v vintagestory_data:/var/vintagestory/data --restart unless-stopped -d -p 42420:42420 snook9/vintagestory_server:1.20.7
 ```
 
 ## Data location

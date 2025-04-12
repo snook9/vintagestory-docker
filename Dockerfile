@@ -7,7 +7,7 @@ ARG USERNAME=vintagestory
 ARG VSPATH=/home/vintagestory/server
 ARG DATAPATH=/var/vintagestory/data
 # Name of the tar.gz file from cdn.vintagestory.at
-ARG FILENAME=vs_server_linux-x64_1.18.8.tar.gz
+ARG FILENAME=vs_server_linux-x64_1.20.7.tar.gz
 
 # Install dependencies
 RUN apt-get update -q -y
