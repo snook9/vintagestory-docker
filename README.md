@@ -5,7 +5,7 @@ Dockerfile for running a Vintage Story Server in a container.
 
 # Docker build
 ``` bash
-docker build -t vintagestory_server .
+docker build -t vintagestory_server:1.20.7 .
 ```
 
 # Docker run
